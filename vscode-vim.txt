@@ -1,0 +1,13 @@
+o   -   add line belove
+O   -   add line above
+A   -   insert at begning 
+I   -   insert at end
+u   -   undo
+i   -   replace
+
+
+
+
+
+
+
