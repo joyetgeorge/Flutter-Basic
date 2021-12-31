@@ -18,6 +18,7 @@ class HelloWorldState extends State {
   var num = 0;
 
   void incriment() {
+    print(num);
     if (num > 2) {
       setState(() {
         num = 0;
@@ -37,45 +38,48 @@ class HelloWorldState extends State {
         'answer': ['blue', 'red', 'green'],
       },
       {
-        'question': 'Which is your fav color?',
+        'question': 'Which is your fav place?',
         'answer': ['blue', 'red', 'green'],
       },
       {
-        'question': 'Which is your fav color?',
+        'question': 'Which is your fav teacher?',
         'answer': ['blue', 'red', 'green'],
       },
       {
-        'question': 'Which is your fav color?',
+        'question': 'Which is your fav food?',
         'answer': ['blue', 'red', 'green'],
-      }
+      },
     ];
 
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.blue,
-            title: Text('Hello World'),
-          ),
-          body: Container(
-            child: Column(
-              children: [
-                Question(
-                  questions[num]['question'],
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Answer(incriment),
-                      Answer(incriment),
-                      Answer(incriment),
-                    ],
-                  ),
-                )
-              ],
+      home: Container(
+        
+        child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.blue,
+              title: Text('Hello World'),
             ),
-          )),
+            body: Container(
+              child: Column(
+                children: [
+                  Question(
+                    questions[num]['question'],
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Answer(incriment),
+                        Answer(incriment),
+                        Answer(incriment),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
