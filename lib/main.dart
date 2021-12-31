@@ -1,3 +1,7 @@
+// import 'dart:io';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import './question.dart';
@@ -15,37 +19,42 @@ class HelloWorld extends StatefulWidget {
 }
 
 class HelloWorldState extends State {
+  // var questions;
+
+  // Future fetchAlbum() async {
+  //   final url = Uri.parse(
+  //       'https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple');
+
+  //   http.Response response =
+  //       await http.get(url, headers: {'Accept': 'application/json'});
+  //   setState(() {
+  //     questions = json.decode(response.body);
+  //     print(questions);
+  //   });
+  //   // return "hello";
+  // }
+
   var num = 0;
 
   var questions = [
     {
-      'question': 'Which is your fav color?',
-      'answer': ['blue', 'red', 'green', 'orange'],
+      'question': 'Which is your fav Text editor?',
+      'answer': ['VScode', 'SublimeText', 'Vim', 'Atom'],
     },
     {
-      'question': 'Which is your fav place?',
-      'answer': ['blue', 'red', 'green'],
+      'question': 'Which is your field?',
+      'answer': ['Frontend', 'Backend', 'Else'],
     },
     {
-      'question': 'Which is your fav teacher?',
-      'answer': ['blue', 'red', 'green'],
-    },
-    {
-      'question': 'Which is your fav food?',
-      'answer': ['blue', 'red', 'green'],
+      'question': 'Which is your fav programming language?',
+      'answer': ['Java', 'Pyton', 'Dart'],
     },
   ];
 
   void incriment() {
-    if (num < questions.length-1) {
       setState(() {
         ++num;
       });
-    } else {
-      setState(() {
-        num=0;
-      });
-    }
   }
 
   @override
@@ -56,7 +65,7 @@ class HelloWorldState extends State {
             backgroundColor: Colors.blue,
             title: const Text('Hello World'),
           ),
-          body: Column(
+          body: num < questions.length ? Column(
             children: [
               Question(
                 questions[num]['question'],
@@ -73,7 +82,9 @@ class HelloWorldState extends State {
                 ),
               )
             ],
-          )),
+          ) : const Center(child: Text('You did it!'),)
+
+          ),
       debugShowCheckedModeBanner: false,
     );
   }
