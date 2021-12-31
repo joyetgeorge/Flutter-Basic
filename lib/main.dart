@@ -17,39 +17,39 @@ class HelloWorld extends StatefulWidget {
 class HelloWorldState extends State {
   var num = 0;
 
+  var questions = [
+    {
+      'question': 'Which is your fav color?',
+      'answer': ['blue', 'red', 'green', 'orange'],
+    },
+    {
+      'question': 'Which is your fav place?',
+      'answer': ['blue', 'red', 'green'],
+    },
+    {
+      'question': 'Which is your fav teacher?',
+      'answer': ['blue', 'red', 'green'],
+    },
+    {
+      'question': 'Which is your fav food?',
+      'answer': ['blue', 'red', 'green'],
+    },
+  ];
+
   void incriment() {
-    if (num > 2) {
+    if (num < questions.length-1) {
       setState(() {
-        num = 0;
+        ++num;
       });
     } else {
       setState(() {
-        ++num;
+        num=0;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'question': 'Which is your fav color?',
-        'answer': ['blue', 'red', 'green', 'orange'],
-      },
-      {
-        'question': 'Which is your fav place?',
-        'answer': ['blue', 'red', 'green'],
-      },
-      {
-        'question': 'Which is your fav teacher?',
-        'answer': ['blue', 'red', 'green'],
-      },
-      {
-        'question': 'Which is your fav food?',
-        'answer': ['blue', 'red', 'green'],
-      },
-    ];
-
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
