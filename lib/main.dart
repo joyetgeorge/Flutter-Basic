@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/quiz.dart';
 
-import './question.dart';
-import './answerButton.dart';
 import './quiz.dart';
+import './score.dart';
 
 void main() => runApp(const HelloWorld());
 
@@ -54,9 +53,9 @@ class HelloWorldState extends State {
                   questionIndex: _questionIndex,
                   incriment: _incriment,
                 )
-              : const Center(
-                  child: Text('You did it!'),
-                )),
+              : const Score(
+
+              )),
       debugShowCheckedModeBanner: false,
     );
   }
