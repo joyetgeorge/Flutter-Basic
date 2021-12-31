@@ -1,11 +1,9 @@
-// import 'dart:io';
-// import 'package:http/http.dart' as http;
-// import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:helloworld/quiz.dart';
 
 import './question.dart';
-import './answer.dart';
+import './answerButton.dart';
+import './quiz.dart';
 
 void main() => runApp(const HelloWorld());
 
@@ -19,24 +17,9 @@ class HelloWorld extends StatefulWidget {
 }
 
 class HelloWorldState extends State {
-  // var questions;
+  var _questionIndex = 0;
 
-  // Future fetchAlbum() async {
-  //   final url = Uri.parse(
-  //       'https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple');
-
-  //   http.Response response =
-  //       await http.get(url, headers: {'Accept': 'application/json'});
-  //   setState(() {
-  //     questions = json.decode(response.body);
-  //     print(questions);
-  //   });
-  //   // return "hello";
-  // }
-
-  var num = 0;
-
-  var questions = [
+  final _questions = [
     {
       'question': 'Which is your fav Text editor?',
       'answer': ['VScode', 'SublimeText', 'Vim', 'Atom'],
@@ -51,10 +34,10 @@ class HelloWorldState extends State {
     },
   ];
 
-  void incriment() {
-      setState(() {
-        ++num;
-      });
+  void _incriment() {
+    setState(() {
+      ++_questionIndex;
+    });
   }
 
   @override
@@ -65,26 +48,15 @@ class HelloWorldState extends State {
             backgroundColor: Colors.blue,
             title: const Text('Hello World'),
           ),
-          body: num < questions.length ? Column(
-            children: [
-              Question(
-                questions[num]['question'],
-              ),
-              Container(
-                margin: const EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ...(questions[num]['answer'] as List<String>).map((e) {
-                      return Answer(incriment, e);
-                    }).toList()
-                  ],
-                ),
-              )
-            ],
-          ) : const Center(child: Text('You did it!'),)
-
-          ),
+          body: _questionIndex < _questions.length
+              ? Quiz(
+                  questions: _questions,
+                  questionIndex: _questionIndex,
+                  incriment: _incriment,
+                )
+              : const Center(
+                  child: Text('You did it!'),
+                )),
       debugShowCheckedModeBanner: false,
     );
   }
