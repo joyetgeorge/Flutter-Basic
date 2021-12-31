@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 import './question.dart';
+import './answer.dart';
 
 void main() => runApp(HelloWorld());
 
 class HelloWorld extends StatefulWidget {
+  const HelloWorld({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return HelloWorldState();
@@ -15,7 +18,7 @@ class HelloWorldState extends State {
   var num = 0;
 
   void incriment() {
-    if (num > 1) {
+    if (num > 2) {
       setState(() {
         num = 0;
       });
@@ -29,9 +32,22 @@ class HelloWorldState extends State {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      "Which is your fav color?",
-      "Which is your fav place?",
-      "Where are you from?"
+      {
+        'question': 'Which is your fav color?',
+        'answer': ['blue', 'red', 'green'],
+      },
+      {
+        'question': 'Which is your fav color?',
+        'answer': ['blue', 'red', 'green'],
+      },
+      {
+        'question': 'Which is your fav color?',
+        'answer': ['blue', 'red', 'green'],
+      },
+      {
+        'question': 'Which is your fav color?',
+        'answer': ['blue', 'red', 'green'],
+      }
     ];
 
     return MaterialApp(
@@ -43,24 +59,17 @@ class HelloWorldState extends State {
           body: Container(
             child: Column(
               children: [
-                Question(questions[num]),
+                Question(
+                  questions[num]['question'],
+                ),
                 Container(
                   margin: EdgeInsets.all(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RaisedButton(
-                        child: Text("Button"),
-                        onPressed: incriment,
-                      ),
-                      RaisedButton(
-                        child: Text("Button"),
-                        onPressed: incriment,
-                      ),
-                      RaisedButton(
-                        child: Text("Button"),
-                        onPressed: incriment,
-                      ),
+                      Answer(incriment),
+                      Answer(incriment),
+                      Answer(incriment),
                     ],
                   ),
                 )
