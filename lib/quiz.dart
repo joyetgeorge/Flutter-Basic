@@ -6,12 +6,12 @@ import 'answer_button.dart';
 class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final int questionIndex;
-  final Function() incriment;
+  final Function() increment;
 
   Quiz({
     required this.questions,
     required this.questionIndex,
-    required this.incriment,
+    required this.increment,
   });
 
   @override
@@ -27,7 +27,7 @@ class Quiz extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ...(questions[questionIndex]['answer'] as List<String>).map((e) {
-                return Answer(incriment, e);
+                return Answer(increment, e);
               }).toList()
             ],
           ),

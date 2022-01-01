@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:helloworld/quiz.dart';
 
 import './quiz.dart';
 import './score.dart';
@@ -29,11 +28,11 @@ class HelloWorldState extends State {
     },
     {
       'question': 'Which is your fav programming language?',
-      'answer': ['Java', 'Pyton', 'Dart'],
+      'answer': ['Java', 'Python', 'Dart'],
     },
   ];
 
-  void _incriment() {
+  void _increment() {
     setState(() {
       ++_questionIndex;
     });
@@ -45,17 +44,27 @@ class HelloWorldState extends State {
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: const Text('Hello World'),
+            title: const Center(child: Text('Developer Surway')),
           ),
           body: _questionIndex < _questions.length
-              ? Quiz(
-                  questions: _questions,
-                  questionIndex: _questionIndex,
-                  incriment: _incriment,
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      // color: Colors.amber,
+                      margin: const EdgeInsets.only(
+                        left: 45,
+                        right: 45,
+                      ),
+                      child: Quiz(
+                        questions: _questions,
+                        questionIndex: _questionIndex,
+                        increment: _increment,
+                      ),
+                    ),
+                  ],
                 )
-              : const Score(
-
-              )),
+              : const Score()),
       debugShowCheckedModeBanner: false,
     );
   }

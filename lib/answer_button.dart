@@ -8,11 +8,13 @@ class Answer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ElevatedButton(
-        child: Text(answerText),
-        onPressed: incrimentFunction,
-      ),
+    return RaisedButton(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      padding: EdgeInsets.all(20),
+      hoverColor: Colors.blue,
+      color: Colors.blueAccent,
+      onPressed: incrimentFunction,
+      child: Text(answerText, style: TextStyle(color: Colors.white),),
     );
   }
 }

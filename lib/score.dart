@@ -7,7 +7,7 @@ class Score extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Text(
-        'End of the surway!',
+        'Thank you for attending the surway surway!',
         style: TextStyle(
           fontSize: 19,
         ),
