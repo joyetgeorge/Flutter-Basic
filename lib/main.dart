@@ -16,6 +16,7 @@ class HelloWorld extends StatefulWidget {
 
 class HelloWorldState extends State {
   var _questionIndex = 0;
+  var resetFlag = false;
 
   final _questions = [
     {
@@ -38,13 +39,19 @@ class HelloWorldState extends State {
     });
   }
 
+  void _reset() {
+    setState(() {
+      _questionIndex = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: const Center(child: Text('Developer Surway')),
+            title: const Center(child: Text('Developer Survey')),
           ),
           body: _questionIndex < _questions.length
               ? Column(
@@ -64,7 +71,7 @@ class HelloWorldState extends State {
                     ),
                   ],
                 )
-              : const Score()),
+              : Score(_reset)),
       debugShowCheckedModeBanner: false,
     );
   }
